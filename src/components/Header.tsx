@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 
 const navLinks = [
@@ -14,11 +15,15 @@ const navLinks = [
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
+  const [pastHero, setPastHero] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const pathname = usePathname();
+  const isHome = pathname === "/";
 
   useEffect(() => {
     function handleScroll() {
       setScrolled(window.scrollY > 100);
+      setPastHero(window.scrollY > 400);
     }
     window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
@@ -50,14 +55,21 @@ export default function Header() {
         } rounded-full border hover:border-[#6EE714]/20 hover:shadow-[0_0_30px_#6EE71420]`}
       >
         <nav className="flex items-center gap-1 px-4 py-2.5">
-          {/* Logo */}
-          <Link href="/" className="flex-shrink-0 px-2">
+          {/* Logo — hidden on homepage until scrolled past hero */}
+          <Link
+            href="/"
+            className={`flex-shrink-0 px-2 transition-all duration-500 ${
+              isHome && !pastHero
+                ? "w-0 opacity-0 overflow-hidden px-0"
+                : "opacity-100"
+            }`}
+          >
             <Image
               src="/logo.png"
               alt="Stacklogy"
               width={100}
               height={24}
-              className="h-6 w-auto"
+              className="h-6 w-auto min-w-[100px]"
               priority
             />
           </Link>

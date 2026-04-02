@@ -138,26 +138,26 @@ export default function Home() {
         {/* Ghost marquee behind — visible */}
         <div className="absolute inset-0 flex items-center pointer-events-none select-none overflow-hidden">
           <div className="flex whitespace-nowrap animate-marquee">
-            <span className="text-[12vw] font-bold text-white/[0.06]">{marqueeText}{marqueeText}{marqueeText}</span>
+            <span className="text-[14vw] font-bold text-white/[0.06] md:text-white/[0.10] lg:text-white/[0.12]">{marqueeText}{marqueeText}{marqueeText}</span>
           </div>
         </div>
 
         <div className="relative z-10 flex flex-col items-center">
-          <Image src="/logo.png" alt="Stacklogy" width={280} height={64} priority className="w-[240px] md:w-[280px]" />
+          <Image src="/logo.png" alt="Stacklogy" width={340} height={78} priority className="w-[280px] md:w-[340px]" />
 
           <div className="mt-6">
             <TextScramble
               text="Cloud Transformation Simplified"
-              className="block font-mono text-[10px] md:text-xs tracking-[0.3em] uppercase text-[#6EE714]"
+              className="block font-mono text-xs md:text-sm tracking-[0.3em] uppercase text-[#6EE714]"
               duration={3000}
             />
           </div>
 
-          <h1 className="mt-5 text-xl md:text-2xl lg:text-3xl font-bold text-white tracking-tight leading-tight max-w-3xl">
+          <h1 className="mt-5 text-2xl md:text-3xl lg:text-4xl font-bold text-white tracking-tight leading-tight max-w-3xl">
             We drive innovation through Enterprise DevOps and Cloud Computing
           </h1>
 
-          <p className="mt-3 text-white/40 text-sm md:text-base max-w-xl leading-relaxed">
+          <p className="mt-4 text-white/40 md:text-white/50 text-sm md:text-lg max-w-2xl leading-relaxed">
             Our mission is to integrate technology seamlessly to accelerate our clients&apos; digital transformation initiatives.
           </p>
 
@@ -178,7 +178,7 @@ export default function Home() {
               { val: "2016", label: "Founded" },
             ].map((s) => (
               <div key={s.label} className="text-center">
-                <p className="text-[#6EE714] font-mono text-xl md:text-2xl font-bold">{s.val}</p>
+                <p className="text-[#6EE714] font-mono text-2xl md:text-3xl font-bold">{s.val}</p>
                 <p className="text-white/20 text-[9px] font-mono mt-1 uppercase tracking-wider">{s.label}</p>
               </div>
             ))}
@@ -189,11 +189,11 @@ export default function Home() {
             <MagneticButton
               href="/contact"
               strength={0.3}
-              className="bg-[#6EE714] text-black px-6 py-2.5 rounded-full text-xs font-bold hover:shadow-[0_0_30px_#6EE71440] transition-all duration-500"
+              className="bg-[#6EE714] text-black px-7 py-3 rounded-full text-sm font-bold hover:shadow-[0_0_30px_#6EE71440] transition-all duration-500"
             >
               Get in touch
             </MagneticButton>
-            <Link href="/work" className="text-white/40 text-xs hover:text-[#6EE714] transition-colors">
+            <Link href="/work" className="text-white/40 text-sm hover:text-[#6EE714] transition-colors">
               View our work &rarr;
             </Link>
           </div>
