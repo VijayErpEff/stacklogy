@@ -54,29 +54,30 @@ export default function Header() {
             : "bg-white/5 backdrop-blur-xl border-white/10"
         } rounded-full border hover:border-[#6EE714]/20 hover:shadow-[0_0_30px_#6EE71420]`}
       >
-        <nav className="flex items-center gap-1 px-4 py-2.5">
+        <nav className="flex items-center px-4 py-2.5">
           {/* Logo — hidden on homepage until scrolled past hero */}
-          <Link
-            href="/"
-            className={`flex-shrink-0 px-2 transition-all duration-500 ${
+          <div
+            className={`flex-shrink-0 transition-all duration-500 overflow-hidden ${
               isHome && !pastHero
-                ? "w-0 opacity-0 overflow-hidden px-0"
-                : "opacity-100"
+                ? "w-0 opacity-0 mr-0"
+                : "w-[116px] opacity-100 mr-1"
             }`}
           >
-            <Image
-              src="/logo.png"
-              alt="Stacklogy"
-              width={100}
-              height={24}
-              className="h-6 w-auto min-w-[100px]"
-              priority
-            />
-          </Link>
+            <Link href="/" className="block">
+              <Image
+                src="/logo.png"
+                alt="Stacklogy"
+                width={100}
+                height={24}
+                className="h-6 w-auto"
+                priority
+              />
+            </Link>
+          </div>
 
           {/* Desktop Nav Links */}
           <div className="hidden items-center gap-1 lg:flex">
-            <div className="mx-2 h-4 w-px bg-white/10" />
+            <div className={`h-4 w-px bg-white/10 transition-all duration-500 ${isHome && !pastHero ? "mx-0 opacity-0 w-0" : "mx-2 opacity-100"}`} />
             {navLinks.map((link) => (
               <Link
                 key={link.href}
@@ -101,7 +102,7 @@ export default function Header() {
           <button
             type="button"
             onClick={() => setMobileOpen(true)}
-            className="inline-flex items-center justify-center rounded-full p-2 text-white/50 transition-colors hover:text-[#6EE714] lg:hidden"
+            className="ml-auto inline-flex items-center justify-center rounded-full p-2 text-white/50 transition-colors hover:text-[#6EE714] lg:hidden"
             aria-label="Open menu"
           >
             <svg
