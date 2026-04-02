@@ -48,7 +48,11 @@ export default function Header() {
         initial={{ y: 40, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, delay: 0.2, ease: [0.23, 1, 0.32, 1] }}
-        className={`fixed top-4 left-1/2 z-50 -translate-x-1/2 transition-all duration-500 ease-out ${
+        className={`fixed top-4 z-50 transition-all duration-500 ease-out ${
+          isHome && !pastHero
+            ? "right-4 left-auto translate-x-0 lg:left-1/2 lg:right-auto lg:-translate-x-1/2"
+            : "left-1/2 -translate-x-1/2"
+        } ${
           scrolled
             ? "bg-black/90 backdrop-blur-xl border-white/5 shadow-lg shadow-black/50"
             : "bg-white/5 backdrop-blur-xl border-white/10"
